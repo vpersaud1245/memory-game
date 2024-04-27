@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import { characters } from "../characters";
 
 function getNumOfCardsFromDifficulty(difficulty) {
@@ -17,33 +18,40 @@ function getCardData(numOfCards) {
   return shuffledCharacterData.slice(0, numOfCards);
 }
 
-function Card({ characterName, characterSrc }) {
-  /* REMOVE INLINE CSS STYLES */
+function Card({ cardInfo, onClick }) {
   return (
-    <div
+    <button
       className="card"
       style={{ height: "100px", width: "100px", border: "1px solid gray" }}
+      onClick={onClick}
     >
       <img
-        src={characterSrc}
-        alt={characterName + "Img"}
+        src={cardInfo.src}
+        alt={cardInfo.name + "Img"}
         style={{ height: "100px", width: "100px" }}
       />
-      <div className="characterName">{characterName}</div>
-    </div>
+      <div className="characterName">{cardInfo.name}</div>
+    </button>
   );
 }
 
 export default function Gameboard({ difficulty }) {
   const numOfCards = getNumOfCardsFromDifficulty(difficulty);
   const cardData = getCardData(numOfCards);
+  const [round, setRound] = useState(1);
 
   const cards = cardData.map((cardInfo) => (
     <Card
       key={cardInfo.id}
-      characterName={cardInfo.characterName}
-      characterSrc={cardInfo.src}
+      cardInfo={cardInfo}
+      onClick={() => setRound(round + 1)}
     />
   ));
-  return <div className="gameboard">{cards}</div>;
+
+  return (
+    <div className="gameboard">
+      <div className="roundNumber">{round}</div>
+      <div className="cards">{cards}</div>
+    </div>
+  );
 }
