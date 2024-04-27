@@ -46,7 +46,7 @@ function checkForLoss(cardsAlreadySelected, cardInfo) {
 export default function Gameboard({ difficulty }) {
   const numOfCards = getNumOfCardsFromDifficulty(difficulty);
   const cardData = getCardData(numOfCards);
-  const [round, setRound] = useState(1);
+  const [roundsWon, setRoundsWon] = useState(0);
   const [cardsAlreadySelected, setCardsAlreadySelected] = useState([]);
 
   const cards = cardData.map((cardInfo) => (
@@ -56,14 +56,14 @@ export default function Gameboard({ difficulty }) {
       onClick={() => {
         setCardsAlreadySelected([...cardsAlreadySelected, cardInfo]);
         if (checkForLoss(cardsAlreadySelected, cardInfo)) return;
-        setRound(round + 1);
+        setRoundsWon(roundsWon + 1);
       }}
     />
   ));
 
   return (
     <div className="gameboard">
-      <div className="roundNumber">{round}</div>
+      <div className="roundNumber">{roundsWon}</div>
       <div className="cards">{cards}</div>
     </div>
   );
