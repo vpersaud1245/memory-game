@@ -35,16 +35,29 @@ function Card({ cardInfo, onClick }) {
   );
 }
 
+function checkForLoss(cardsAlreadySelected, cardInfo) {
+  if (cardsAlreadySelected.includes(cardInfo)) {
+    console.log("Card already chosen");
+    return true;
+  }
+  return false;
+}
+
 export default function Gameboard({ difficulty }) {
   const numOfCards = getNumOfCardsFromDifficulty(difficulty);
   const cardData = getCardData(numOfCards);
   const [round, setRound] = useState(1);
+  const [cardsAlreadySelected, setCardsAlreadySelected] = useState([]);
 
   const cards = cardData.map((cardInfo) => (
     <Card
       key={cardInfo.id}
       cardInfo={cardInfo}
-      onClick={() => setRound(round + 1)}
+      onClick={() => {
+        setCardsAlreadySelected([...cardsAlreadySelected, cardInfo]);
+        if (checkForLoss(cardsAlreadySelected, cardInfo)) return;
+        setRound(round + 1);
+      }}
     />
   ));
 
