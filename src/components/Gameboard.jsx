@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { characters } from "../characters";
+import GameoverScreen from "./GameoverScreen";
 
 function getNumOfCardsFromDifficulty(difficulty) {
   if (difficulty === "easy") return 3;
@@ -37,7 +38,6 @@ function Card({ cardInfo, onClick }) {
 
 function checkForLoss(cardsAlreadySelected, cardInfo) {
   if (cardsAlreadySelected.includes(cardInfo)) {
-    console.log("Card already chosen");
     return true;
   }
   return false;
@@ -48,6 +48,7 @@ export default function Gameboard({ difficulty }) {
   const cardData = getCardData(numOfCards);
   const [roundsWon, setRoundsWon] = useState(0);
   const [cardsAlreadySelected, setCardsAlreadySelected] = useState([]);
+  const [isLoss, setIsLoss] = useState(false);
 
   const cards = cardData.map((cardInfo) => (
     <Card
@@ -55,7 +56,10 @@ export default function Gameboard({ difficulty }) {
       cardInfo={cardInfo}
       onClick={() => {
         setCardsAlreadySelected([...cardsAlreadySelected, cardInfo]);
-        if (checkForLoss(cardsAlreadySelected, cardInfo)) return;
+        if (checkForLoss(cardsAlreadySelected, cardInfo)) {
+          setIsLoss(true);
+          return;
+        }
         setRoundsWon(roundsWon + 1);
       }}
     />
@@ -65,6 +69,7 @@ export default function Gameboard({ difficulty }) {
     <div className="gameboard">
       <div className="roundNumber">{roundsWon}</div>
       <div className="cards">{cards}</div>
+      {isLoss && <GameoverScreen isLoss={isLoss} />}
     </div>
   );
 }
