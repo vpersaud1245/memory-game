@@ -49,14 +49,25 @@ function checkForLoss(cardsAlreadySelected, cardInfo) {
   return false;
 }
 
+// Return true if cards already selected does not contain card in card data
+function hasNewCard(cardData, cardsAlreadySelected) {
+  return cardData.some((card) => !cardsAlreadySelected.includes(card));
+}
+
 export default function Gameboard({ difficulty }) {
   const numOfCards = getNumOfCards(difficulty);
   const numOfRounds = getNumOfRounds(difficulty);
   const [roundsWon, setRoundsWon] = useState(0);
-  const cardData = getCardData(numOfCards);
-  console.log(cardData);
   const [cardsAlreadySelected, setCardsAlreadySelected] = useState([]);
   const [isLoss, setIsLoss] = useState(false);
+
+  let cardData = getCardData(numOfCards);
+  while (
+    !hasNewCard(cardData, cardsAlreadySelected) &&
+    roundsWon < numOfRounds
+  ) {
+    cardData = getCardData(numOfCards);
+  }
 
   function handleCardClick(cardInfo) {
     setCardsAlreadySelected([...cardsAlreadySelected, cardInfo]);
