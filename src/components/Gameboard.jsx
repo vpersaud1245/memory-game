@@ -54,6 +54,7 @@ export default function Gameboard({ difficulty }) {
   const numOfRounds = getNumOfRounds(difficulty);
   const [roundsWon, setRoundsWon] = useState(0);
   const cardData = getCardData(numOfCards);
+  console.log(cardData);
   const [cardsAlreadySelected, setCardsAlreadySelected] = useState([]);
   const [isLoss, setIsLoss] = useState(false);
 
@@ -64,6 +65,12 @@ export default function Gameboard({ difficulty }) {
       return;
     }
     setRoundsWon(roundsWon + 1);
+  }
+
+  function handleGameoverRestartClick() {
+    setRoundsWon(0);
+    setCardsAlreadySelected([]);
+    if (isLoss) setIsLoss(false);
   }
 
   const cards = cardData.map((cardInfo) => (
@@ -82,8 +89,18 @@ export default function Gameboard({ difficulty }) {
       <div className="cards">{cards}</div>
 
       {/* Display Gameover Screens */}
-      {isLoss && <GameoverScreen isLoss={true} />}
-      {roundsWon === numOfRounds && <GameoverScreen isLoss={false} />}
+      {isLoss && (
+        <GameoverScreen
+          isLoss={true}
+          onClick={() => handleGameoverRestartClick()}
+        />
+      )}
+      {roundsWon === numOfRounds && (
+        <GameoverScreen
+          isLoss={false}
+          onClick={() => handleGameoverRestartClick()}
+        />
+      )}
     </div>
   );
 }
