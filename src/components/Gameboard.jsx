@@ -3,10 +3,16 @@ import { useState } from "react";
 import { characters } from "../characters";
 import GameoverScreen from "./GameoverScreen";
 
-function getNumOfCardsFromDifficulty(difficulty) {
+function getNumOfCards(difficulty) {
   if (difficulty === "easy") return 3;
   if (difficulty === "medium") return 4;
   if (difficulty === "hard") return 5;
+}
+
+function getNumOfRounds(difficulty) {
+  if (difficulty === "easy") return 5;
+  if (difficulty === "medium") return 7;
+  if (difficulty === "hard") return 10;
 }
 
 function getCardData(numOfCards) {
@@ -44,32 +50,40 @@ function checkForLoss(cardsAlreadySelected, cardInfo) {
 }
 
 export default function Gameboard({ difficulty }) {
-  const numOfCards = getNumOfCardsFromDifficulty(difficulty);
-  const cardData = getCardData(numOfCards);
+  const numOfCards = getNumOfCards(difficulty);
+  const numOfRounds = getNumOfRounds(difficulty);
   const [roundsWon, setRoundsWon] = useState(0);
+  const cardData = getCardData(numOfCards);
   const [cardsAlreadySelected, setCardsAlreadySelected] = useState([]);
   const [isLoss, setIsLoss] = useState(false);
+
+  function handleCardClick(cardInfo) {
+    setCardsAlreadySelected([...cardsAlreadySelected, cardInfo]);
+    if (checkForLoss(cardsAlreadySelected, cardInfo)) {
+      setIsLoss(true);
+      return;
+    }
+    setRoundsWon(roundsWon + 1);
+  }
 
   const cards = cardData.map((cardInfo) => (
     <Card
       key={cardInfo.id}
       cardInfo={cardInfo}
       onClick={() => {
-        setCardsAlreadySelected([...cardsAlreadySelected, cardInfo]);
-        if (checkForLoss(cardsAlreadySelected, cardInfo)) {
-          setIsLoss(true);
-          return;
-        }
-        setRoundsWon(roundsWon + 1);
+        handleCardClick(cardInfo);
       }}
     />
   ));
 
   return (
     <div className="gameboard">
-      <div className="roundNumber">{roundsWon}</div>
+      <div className="gameboard__round">{`${roundsWon} / ${numOfRounds}`}</div>
       <div className="cards">{cards}</div>
-      {isLoss && <GameoverScreen isLoss={isLoss} />}
+
+      {/* Display Gameover Screens */}
+      {isLoss && <GameoverScreen isLoss={true} />}
+      {roundsWon === numOfRounds && <GameoverScreen isLoss={false} />}
     </div>
   );
 }
