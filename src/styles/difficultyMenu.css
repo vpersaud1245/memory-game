@@ -1,0 +1,32 @@
+.difficulty__menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.difficulty-menu__difficulty-btns {
+  display: flex;
+  gap: 15px;
+}
+
+.difficulty-menu__title {
+  color: #a1ac82;
+  text-shadow: -0.06em 0 0.08em #000, 0.06em 0 0.08em #000, 0 0.06em 0.08em #000,
+    0 -0.06em 0.08em #000, -0.06em 0.06em 0.08em #000, 0.06em 0.06em 0.08em #000,
+    -0.06em -0.06em 0.08em #000, 0.06em -0.06em 0.08em #000;
+  font-size: 3.5rem;
+}
+
+.difficulty__btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  border: none;
+  box-shadow: 0 5px 10px #000, 0 -5px 10px #000;
+  transition: transform 300ms;
+}
+
+.difficulty__btn:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
