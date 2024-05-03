@@ -1,7 +1,18 @@
+@keyframes GrowIn {
+  from {
+    transform: scale(0%);
+  }
+
+  to {
+    transform: scale(100%);
+  }
+}
+
 .difficulty__menu {
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: GrowIn 500ms;
 }
 
 .difficulty-menu__difficulty-btns {
