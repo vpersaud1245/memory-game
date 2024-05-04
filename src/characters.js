@@ -1,13 +1,13 @@
-import MabelImg from "./assets/characters/Mabel_Pines.png";
-import DipperImg from "./assets/characters/Dipper_Pines.png";
-import StanImg from "./assets/characters/Stan_Pines.png";
-import WaddlesImg from "./assets/characters/Waddles.jpg";
-import SoosImg from "./assets/characters/Soos.jpg";
-import FordImg from "./assets/characters/Ford.jpg";
-import GrendaImg from "./assets/characters/Grenda.jpg";
-import WendyImg from "./assets/characters/Wendy.png";
-import TobyImg from "./assets/characters/Toby.jpg";
-import CandyImg from "./assets/characters/Candy.jpg";
+import MabelImg from "./assets/characters/Mabel.webp";
+import DipperImg from "./assets/characters/Dipper.webp";
+import StanImg from "./assets/characters/Stan.webp";
+import WaddlesImg from "./assets/characters/Waddles.webp";
+import SoosImg from "./assets/characters/Soos.webp";
+import FordImg from "./assets/characters/Ford.webp";
+import GrendaImg from "./assets/characters/Grenda.webp";
+import WendyImg from "./assets/characters/Wendy.webp";
+import TobyImg from "./assets/characters/Toby.webp";
+import CandyImg from "./assets/characters/Candy.webp";
 import { v4 as uuidv4 } from "uuid";
 
 export const characters = [
