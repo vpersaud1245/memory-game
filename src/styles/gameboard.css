@@ -1,9 +1,19 @@
 .gameboard {
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
 }
 
 .cards {
   display: flex;
   gap: 20px;
   justify-content: center;
+}
+
+.gameboard__round {
+  color: white;
+  font-family: "Potta One", sans-serif;
+  font-size: 20px;
 }

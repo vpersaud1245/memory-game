@@ -34,7 +34,6 @@ function checkForLoss(cardsAlreadySelected, cardInfo) {
   return false;
 }
 
-// Return true if cards already selected does not contain card in card data
 function hasNewCard(cardData, cardsAlreadySelected) {
   return cardData.some((card) => !cardsAlreadySelected.includes(card));
 }
@@ -81,8 +80,8 @@ export default function Gameboard({ difficulty }) {
 
   return (
     <div className="gameboard">
-      <div className="gameboard__round">{`${roundsWon} / ${numOfRounds}`}</div>
       <div className="cards">{cards}</div>
+      <div className="gameboard__round">{`${roundsWon} / ${numOfRounds}`}</div>
 
       {/* Display Gameover Screens */}
       {isLoss && (
