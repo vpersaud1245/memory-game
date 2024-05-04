@@ -1,0 +1,9 @@
+.gameboard {
+  width: 80%;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}

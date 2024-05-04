@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { characters } from "../characters";
 import GameoverScreen from "./GameoverScreen";
+import Card from "./Card";
+import "../styles/gameboard.css";
 
 function getNumOfCards(difficulty) {
   if (difficulty === "easy") return 3;
@@ -23,23 +25,6 @@ function getCardData(numOfCards) {
 
   // Select data based on number of cards needed
   return shuffledCharacterData.slice(0, numOfCards);
-}
-
-function Card({ cardInfo, onClick }) {
-  return (
-    <button
-      className="card"
-      style={{ height: "100px", width: "100px", border: "1px solid gray" }}
-      onClick={onClick}
-    >
-      <img
-        src={cardInfo.src}
-        alt={cardInfo.name + "Img"}
-        style={{ height: "100px", width: "100px" }}
-      />
-      <div className="characterName">{cardInfo.name}</div>
-    </button>
-  );
 }
 
 function checkForLoss(cardsAlreadySelected, cardInfo) {
