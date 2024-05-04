@@ -1,4 +1,5 @@
 .card {
+  background-image: url("../assets/images/card-background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -7,10 +8,29 @@
   aspect-ratio: 1 / 1.546;
   border-radius: 10px;
   padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 10px;
+  gap: 5px;
 }
 
-.card__cover {
+.card:hover {
+  cursor: pointer;
+}
+
+.card__img {
   width: 100%;
   border-radius: 10px;
-  height: 100%;
+  height: 95%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.character__name {
+  font-size: 20px;
+  color: white;
 }
