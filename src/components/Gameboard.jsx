@@ -4,6 +4,8 @@ import { characters } from "../characters";
 import GameoverScreen from "./GameoverScreen";
 import Card from "./Card";
 import "../styles/gameboard.css";
+import Header from "./Header";
+import MemoryCard from "./MemoryCard";
 
 function getNumOfCards(difficulty) {
   if (difficulty === "easy") return 3;
@@ -44,6 +46,7 @@ export default function Gameboard({ difficulty }) {
   const [roundsWon, setRoundsWon] = useState(0);
   const [cardsAlreadySelected, setCardsAlreadySelected] = useState([]);
   const [isLoss, setIsLoss] = useState(false);
+  const [returnToMain, setReturnToMain] = useState(false);
 
   let cardData = getCardData(numOfCards);
   while (
@@ -68,6 +71,10 @@ export default function Gameboard({ difficulty }) {
     if (isLoss) setIsLoss(false);
   }
 
+  function handleLogoClick() {
+    setReturnToMain(true);
+  }
+
   const cards = cardData.map((cardInfo) => (
     <Card
       key={cardInfo.id}
@@ -78,11 +85,15 @@ export default function Gameboard({ difficulty }) {
     />
   ));
 
+  if (returnToMain === true) {
+    return <MemoryCard />;
+  }
+
   return (
     <div className="gameboard">
+      <Header onClick={handleLogoClick} />
       <div className="cards">{cards}</div>
       <div className="gameboard__round">{`${roundsWon} / ${numOfRounds}`}</div>
-
       {/* Display Gameover Screens */}
       {isLoss && (
         <GameoverScreen

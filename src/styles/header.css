@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  padding: 20px;
+}
+
+.main-menu__btn {
+  background-color: transparent;
+  border: none;
+  transition: transform 500ms;
+  padding: 0;
+  margin-left: 20px;
+}
+
+.main-menu__btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.main-menu-btn__logo {
+  height: auto;
+  width: 200px;
+}
