@@ -13,7 +13,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 30px;
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .gameover-screen__restart-btn {
