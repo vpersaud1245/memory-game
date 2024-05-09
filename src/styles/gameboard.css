@@ -16,6 +16,10 @@
   }
 }
 
+.pointer-events-none {
+  pointer-events: none;
+}
+
 .cards {
   display: flex;
   gap: 20px;

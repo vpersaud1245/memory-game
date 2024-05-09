@@ -49,6 +49,7 @@ export default function Gameboard({ difficulty }) {
   const [returnToMain, setReturnToMain] = useState(false);
   const [bestScore, setBestScore] = useState(0);
   const [score, setScore] = useState(0);
+  const [cardsClass, setCardsClass] = useState("cards");
 
   if (score > bestScore) setBestScore(score);
 
@@ -64,6 +65,7 @@ export default function Gameboard({ difficulty }) {
     setCardsAlreadySelected([...cardsAlreadySelected, cardInfo]);
     if (checkForLoss(cardsAlreadySelected, cardInfo)) {
       setIsLoss(true);
+      setCardsClass("cards pointer-events-none");
       return;
     }
     setRoundsWon(roundsWon + 1);
@@ -74,6 +76,7 @@ export default function Gameboard({ difficulty }) {
     setRoundsWon(0);
     setScore(0);
     setCardsAlreadySelected([]);
+    setCardsClass("cards");
     if (isLoss) setIsLoss(false);
   }
 
@@ -98,7 +101,7 @@ export default function Gameboard({ difficulty }) {
   return (
     <div className="gameboard">
       <Header score={score} onClick={handleLogoClick} bestScore={bestScore} />
-      <div className="cards">{cards}</div>
+      <div className={cardsClass}>{cards}</div>
       <div className="gameboard__round">{`${roundsWon} / ${numOfRounds}`}</div>
       {/* Display Gameover Screens */}
       {isLoss && (
