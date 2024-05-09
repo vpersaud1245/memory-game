@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import logo from "../assets/images/logo.png";
 import "../styles/header.css";
 export default function Header({ score, bestScore, onClick }) {
@@ -10,6 +11,10 @@ export default function Header({ score, bestScore, onClick }) {
           alt="gravity-falls-logo"
         />
       </button>
+      <div className="score__container">
+        <div className="score">{`Score: ${score}`}</div>
+        <div className="best-score">{`Best Score: ${bestScore}`}</div>
+      </div>
     </header>
   );
 }

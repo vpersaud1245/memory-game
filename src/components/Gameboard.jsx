@@ -47,6 +47,10 @@ export default function Gameboard({ difficulty }) {
   const [cardsAlreadySelected, setCardsAlreadySelected] = useState([]);
   const [isLoss, setIsLoss] = useState(false);
   const [returnToMain, setReturnToMain] = useState(false);
+  const [bestScore, setBestScore] = useState(0);
+  const [score, setScore] = useState(0);
+
+  if (score > bestScore) setBestScore(score);
 
   let cardData = getCardData(numOfCards);
   while (
@@ -63,10 +67,12 @@ export default function Gameboard({ difficulty }) {
       return;
     }
     setRoundsWon(roundsWon + 1);
+    setScore(score + 1);
   }
 
   function handleGameoverRestartClick() {
     setRoundsWon(0);
+    setScore(0);
     setCardsAlreadySelected([]);
     if (isLoss) setIsLoss(false);
   }
@@ -91,7 +97,7 @@ export default function Gameboard({ difficulty }) {
 
   return (
     <div className="gameboard">
-      <Header onClick={handleLogoClick} />
+      <Header score={score} onClick={handleLogoClick} bestScore={bestScore} />
       <div className="cards">{cards}</div>
       <div className="gameboard__round">{`${roundsWon} / ${numOfRounds}`}</div>
       {/* Display Gameover Screens */}
