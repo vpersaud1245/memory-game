@@ -2,8 +2,9 @@
   display: flex;
   position: absolute;
   top: 0;
-  width: 100vw;
+  width: 100%;
   padding: 20px;
+  justify-content: space-between;
 }
 
 .main-menu__btn {
@@ -22,4 +23,19 @@
 .main-menu-btn__logo {
   height: auto;
   width: 200px;
+}
+
+.score__container {
+  color: white;
+  background-color: #17233e;
+  margin-right: 20px;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: fit-content;
+  gap: 10px;
+  font-size: 25px;
+  box-shadow: 0 5px 15px #424242, 0px -5px 15px#424242;
+  border-radius: 15px;
 }
