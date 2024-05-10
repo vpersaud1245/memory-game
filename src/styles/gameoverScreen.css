@@ -16,6 +16,17 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  animation: fadeIn 300ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
 }
 
 .gameover-screen__restart-btn {
