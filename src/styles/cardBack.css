@@ -1,0 +1,12 @@
+.card__back {
+  background-image: url("../assets/images/card-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 10px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}

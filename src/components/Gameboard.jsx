@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { characters } from "../characters";
 import GameoverScreen from "./GameoverScreen";
-import Card from "./Card";
 import "../styles/gameboard.css";
 import Header from "./Header";
 import MemoryCard from "./MemoryCard";
+import CardFront from "./CardFront";
+import CardBack from "./CardBack";
 
 function getNumOfCards(difficulty) {
   if (difficulty === "easy") return 3;
@@ -50,6 +51,16 @@ export default function Gameboard({ difficulty }) {
   const [bestScore, setBestScore] = useState(0);
   const [score, setScore] = useState(0);
   const [cardsClass, setCardsClass] = useState("cards");
+  const [cardClass, setCardClass] = useState("card");
+
+  useEffect(() => {
+    if (roundsWon > 0) {
+      const cards = document.querySelectorAll(".card");
+      cards.forEach((card) => {
+        card.classList.remove("rotate");
+      });
+    }
+  }, [roundsWon]);
 
   if (score > bestScore) setBestScore(score);
 
@@ -62,14 +73,19 @@ export default function Gameboard({ difficulty }) {
   }
 
   function handleCardClick(cardInfo) {
-    setCardsAlreadySelected([...cardsAlreadySelected, cardInfo]);
     if (checkForLoss(cardsAlreadySelected, cardInfo)) {
       setIsLoss(true);
       setCardsClass("cards pointer-events-none");
-      return;
+    } else {
+      const cards = document.querySelectorAll(".card");
+      cards.forEach((card) => card.classList.add("rotate"));
+      setTimeout(() => {
+        setCardClass("card rotate");
+        setCardsAlreadySelected([...cardsAlreadySelected, cardInfo]);
+        setRoundsWon(roundsWon + 1);
+        setScore(score + 1);
+      }, 800);
     }
-    setRoundsWon(roundsWon + 1);
-    setScore(score + 1);
   }
 
   function handleGameoverRestartClick() {
@@ -85,13 +101,17 @@ export default function Gameboard({ difficulty }) {
   }
 
   const cards = cardData.map((cardInfo) => (
-    <Card
-      key={cardInfo.id}
-      cardInfo={cardInfo}
-      onClick={() => {
-        handleCardClick(cardInfo);
-      }}
-    />
+    <div className="main-card-container" key={cardInfo.id}>
+      <div className={roundsWon > 0 ? cardClass : "card"}>
+        <CardFront
+          cardInfo={cardInfo}
+          onClick={() => {
+            handleCardClick(cardInfo);
+          }}
+        />
+        <CardBack />
+      </div>
+    </div>
   ));
 
   if (returnToMain === true) {

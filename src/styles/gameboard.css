@@ -17,8 +17,26 @@
   }
 }
 
+.main-card-container {
+  width: 220px;
+  aspect-ratio: 1 / 1.546;
+  position: relative;
+}
+
+.card {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: all 700ms ease;
+}
+
 .pointer-events-none {
   pointer-events: none;
+}
+
+.rotate {
+  transform: rotateY(180deg);
 }
 
 .cards {

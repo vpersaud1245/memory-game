@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef } from "react";
-import "../styles/card.css";
+import "../styles/cardFront.css";
 import VanillaTilt from "vanilla-tilt";
-export default function Card({ cardInfo, onClick }) {
+export default function CardFront({ cardInfo, onClick }) {
   const cardRef = useRef(null);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function Card({ cardInfo, onClick }) {
   }, []);
 
   return (
-    <button ref={cardRef} className="card" onClick={onClick}>
+    <button ref={cardRef} className="card__front" onClick={onClick}>
       <div
         className="card__img"
         style={{ backgroundImage: `url(${cardInfo.src})` }}
