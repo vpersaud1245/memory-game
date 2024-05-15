@@ -7,6 +7,7 @@ import Header from "./Header";
 import MemoryCard from "./MemoryCard";
 import CardFront from "./CardFront";
 import CardBack from "./CardBack";
+import Footer from "./Footer";
 
 function getNumOfCards(difficulty) {
   if (difficulty === "easy") return 3;
@@ -123,6 +124,7 @@ export default function Gameboard({ difficulty }) {
       <Header score={score} onClick={handleLogoClick} bestScore={bestScore} />
       <div className={cardsClass}>{cards}</div>
       <div className="gameboard__round">{`${roundsWon} / ${numOfRounds}`}</div>
+      <Footer />
       {/* Display Gameover Screens */}
       {isLoss && (
         <GameoverScreen
