@@ -2,7 +2,6 @@ import { useState } from "react";
 import Gameboard from "./Gameboard";
 import "../styles/difficultyMenu.css";
 import logo from "../assets/images/logo.png";
-import Footer from "./Footer";
 
 export default function MemoryCard() {
   const [difficulty, setDifficulty] = useState(null);
@@ -39,7 +38,6 @@ export default function MemoryCard() {
           Hard
         </button>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -122,8 +122,12 @@ export default function Gameboard({ difficulty }) {
   return (
     <div className="gameboard">
       <Header score={score} onClick={handleLogoClick} bestScore={bestScore} />
-      <div className={cardsClass}>{cards}</div>
-      <div className="gameboard__round">{`${roundsWon} / ${numOfRounds}`}</div>
+      {roundsWon < numOfRounds && (
+        <div className="gameboard__main">
+          <div className={cardsClass}>{cards}</div>
+          <div className="gameboard__round">{`${roundsWon} / ${numOfRounds}`}</div>
+        </div>
+      )}
       <Footer />
       {/* Display Gameover Screens */}
       {isLoss && (
