@@ -34,3 +34,13 @@
   font-size: 20px;
   color: white;
 }
+
+@media (width < 600px) {
+  .character__name {
+    font-size: 12px;
+  }
+
+  .card__front {
+    padding: 10px 10px 0 10px;
+  }
+}

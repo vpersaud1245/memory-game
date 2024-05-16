@@ -6,6 +6,11 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
 .memory-card__app {
   height: 100vh;
   display: flex;
@@ -15,4 +20,10 @@
 
 .memory-card__app > * {
   font-family: "Potta One", sans-serif;
+}
+
+@media (width < 600px) {
+  .memory-card__app {
+    align-items: flex-start;
+  }
 }

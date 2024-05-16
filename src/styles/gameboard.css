@@ -47,9 +47,11 @@
 }
 
 .cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-auto-flow: column;
+  align-items: center;
   gap: 20px;
-  justify-content: center;
   animation: GrowIn 500ms;
 }
 
@@ -57,4 +59,33 @@
   color: white;
   font-family: "Potta One", sans-serif;
   font-size: 20px;
+}
+
+@media (width < 1200px) {
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .main-card-container {
+    width: clamp(100px, 200px, 220px);
+  }
+}
+
+@media (width < 900px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    grid-auto-flow: row;
+  }
+
+  .cards > :nth-last-child(1):nth-child(odd) {
+    grid-column: span 2; /* Span across both columns */
+    justify-self: center; /* Center the last odd card within the grid */
+  }
+}
+
+@media (width < 600px) {
+  .main-card-container {
+    width: 100px;
+  }
 }

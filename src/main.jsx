@@ -8,10 +8,12 @@ import Footer from "./components/Footer";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BackgroundVideo />
-    <div className="memory-card__app">
-      <MemoryCard />
+    <div className="main">
+      <BackgroundVideo />
+      <div className="memory-card__app">
+        <MemoryCard />
+      </div>
+      <Footer />
     </div>
-    <Footer />
   </React.StrictMode>
 );

@@ -39,3 +39,26 @@
   box-shadow: 0 5px 15px #424242, 0px -5px 15px#424242;
   border-radius: 15px;
 }
+
+@media (width < 600px) {
+  .header {
+    position: static;
+    flex-direction: column;
+    padding: 0;
+    gap: 20px;
+    padding: 5px;
+    align-items: center;
+  }
+
+  .main-menu-btn__logo {
+    height: auto;
+    width: 150px;
+  }
+
+  .score__container {
+    margin: 0;
+    font-size: 12px;
+    padding: 10px;
+    width: fit-content;
+  }
+}

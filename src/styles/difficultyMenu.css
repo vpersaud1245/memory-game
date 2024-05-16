@@ -35,9 +35,31 @@
   border: none;
   box-shadow: 0 5px 10px #000, 0 -5px 10px #000;
   transition: transform 300ms;
+  background-color: #a1ac82;
 }
 
 .difficulty__btn:hover {
   transform: scale(1.05);
   cursor: pointer;
+}
+
+@media (width < 600px) {
+  .difficulty__menu {
+    width: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .difficulty-menu__logo {
+    width: 295px;
+    height: auto;
+  }
+
+  .difficulty-menu__title {
+    font-size: 1.5rem;
+  }
+
+  .difficulty__btn {
+    font-size: 1rem;
+  }
 }
