@@ -22,7 +22,7 @@
   font-family: "Potta One", sans-serif;
 }
 
-@media (width < 600px) {
+@media (width < 800px) {
   .memory-card__app {
     align-items: flex-start;
   }

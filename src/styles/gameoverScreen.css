@@ -49,3 +49,19 @@
   border-radius: 10px;
   color: white;
 }
+
+@media (width < 450px) {
+  .gameover-screen__title {
+    font-size: 20px;
+  }
+
+  .gameover-screen__restart-btn {
+    font-size: 20px;
+  }
+
+  .gameover-screen {
+    background-size: cover;
+    width: 70%;
+    height: 30%;
+  }
+}

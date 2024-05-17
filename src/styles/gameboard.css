@@ -71,7 +71,7 @@
   }
 }
 
-@media (width < 900px) {
+@media (width < 950px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
@@ -82,10 +82,29 @@
     grid-column: span 2; /* Span across both columns */
     justify-self: center; /* Center the last odd card within the grid */
   }
+
+  .main-card-container {
+    width: clamp(100px, 150px, 200px);
+  }
 }
 
 @media (width < 600px) {
   .main-card-container {
-    width: 100px;
+    width: clamp(85px, 100px, 200px);
+  }
+
+  .cards {
+    gap: 10px;
+  }
+}
+
+@media (width < 400px) {
+  .main-card-container {
+    min-width: 50px;
+    max-width: 85px;
+  }
+
+  .cards {
+    gap: 10px;
   }
 }

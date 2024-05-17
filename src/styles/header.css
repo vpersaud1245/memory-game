@@ -40,7 +40,7 @@
   border-radius: 15px;
 }
 
-@media (width < 600px) {
+@media (width < 800px) {
   .header {
     position: static;
     flex-direction: column;
